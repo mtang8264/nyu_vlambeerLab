@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class CameraController : MonoBehaviour
 {
@@ -10,19 +11,27 @@ public class CameraController : MonoBehaviour
     public float defaultSize;
 
     public Slider zoomSlider, leftRightSlider, topBotSlider;
+    public TextMeshProUGUI zoomText;
+
+    public Slider maxSlider;
+    public TextMeshProUGUI maxText;
 
     void Start()
     {
-        
+        maxSlider.value = Pathmaker.max;
     }
 
     void Update()
     {
+        Pathmaker.max = (int)maxSlider.value;
+        maxText.text = "" + Pathmaker.max;
+
         defaultX = (Pathmaker.left + Pathmaker.right) / 2;
         defaultY = (Pathmaker.top + Pathmaker.bot) / 2;
 
         transform.position = new Vector3(Mathf.Lerp(Pathmaker.left, Pathmaker.right, leftRightSlider.value), 100, Mathf.Lerp(Pathmaker.top, Pathmaker.bot, topBotSlider.value)); ;
 
+        zoomText.text = "" + (Mathf.Round(zoomSlider.value * 100) / 100) + "x";
 
         defaultSize = (Pathmaker.top - Pathmaker.bot) / 5 * 3;
 

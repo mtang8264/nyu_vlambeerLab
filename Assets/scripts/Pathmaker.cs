@@ -20,6 +20,7 @@ public class Pathmaker : MonoBehaviour {
     //	Declare a public Transform called pathmakerSpherePrefab, assign the prefab in inspector; 		// you'll have to make a "pathmakerSphere" prefab later
     private int counter = 0;
     public static int totalCounter = 0;
+    public static int max = 500;
     public Transform floorPrefab;
     public Transform floorPrefab_Crack;
     public Transform floorPrefab_Hole;
@@ -50,19 +51,20 @@ public class Pathmaker : MonoBehaviour {
 //			Increment counter;
 //		Else:
 //			Destroy my game object; 		// self destruct if I've made enough tiles already
-        if(totalCounter >=  500)
+        if(totalCounter >=  max)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
         if(counter < counterMax)
         {
             float i = Random.value;
-            if(i < 0.15f)
+            if(i < 0.05f)
             {
                 transform.Rotate(0, 90, 0);
             }
-            else if(i > 0.15f && i < 0.3f)
+            else if(i > 0.05f && i < 0.1f)
             {
                 transform.Rotate(0, -90, 0);
             }
@@ -134,7 +136,8 @@ public class Pathmaker : MonoBehaviour {
         }
         else
         {
-            Destroy(gameObject);
+            // Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 	}
 
