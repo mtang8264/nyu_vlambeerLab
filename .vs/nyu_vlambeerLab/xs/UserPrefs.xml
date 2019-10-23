@@ -1,8 +1,8 @@
 ﻿<Properties StartupConfiguration="{FC6A9C92-C4AC-F837-2D64-E5B951F94CA5}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/CameraController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/scripts/Pathmaker.cs">
     <Files>
-      <File FileName="Assets/scripts/Pathmaker.cs" Line="13" Column="47" />
-      <File FileName="Assets/scripts/CameraController.cs" Line="14" Column="27" />
+      <File FileName="Assets/scripts/Pathmaker.cs" Line="140" Column="41" />
+      <File FileName="Assets/scripts/CameraController.cs" Line="34" Column="79" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -10,7 +10,7 @@
           <Node name="nyu_vlambeerLab" expanded="True">
             <Node name="Assets" expanded="True">
               <Node name="scripts" expanded="True">
-                <Node name="CameraController.cs" selected="True" />
+                <Node name="Pathmaker.cs" selected="True" />
               </Node>
             </Node>
           </Node>
