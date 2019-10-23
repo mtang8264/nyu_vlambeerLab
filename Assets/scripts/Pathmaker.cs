@@ -104,23 +104,28 @@ public class Pathmaker : MonoBehaviour {
                 }
             }
 
+            Transform t;
             float j = Random.value;
             if (j < 0.7)
             {
-                Instantiate(floorPrefab).position = transform.position;
+                t = Instantiate(floorPrefab);
             }
             else if(j < 0.8)
             {
-                Instantiate(floorPrefab_Skull).position = transform.position;
+                t = Instantiate(floorPrefab_Skull);
             }
             else if(j < 0.9)
             {
-                Instantiate(floorPrefab_Crack).position = transform.position;
+                t = Instantiate(floorPrefab_Crack);
             }
             else
             {
-                Instantiate(floorPrefab_Hole).position = transform.position;
+                t = Instantiate(floorPrefab_Hole);
             }
+
+            t.position = transform.position;
+            t.rotation = transform.rotation;
+            t.Rotate(-90, 0, 0);
 
             transform.Translate(5, 0, 0);
 
