@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2894174330348397011}
   - component: {fileID: 4702297707568829076}
   m_Layer: 0
-  m_Name: FloorTile
+  m_Name: FloorTile_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,8 +50,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: df855db4a67ad415b91055d58118b549, type: 2}
   - {fileID: 2100000, guid: 365076f24b422471da5e012d85e1c029, type: 2}
+  - {fileID: 2100000, guid: df855db4a67ad415b91055d58118b549, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,7 +79,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1680193034015120}
-  m_Mesh: {fileID: -5495902117074765545, guid: f50087772c460479d94aa092fa25233c, type: 3}
+  m_Mesh: {fileID: -5495902117074765545, guid: 8b4ef2eedfdb84d4da84ce4b798d2516, type: 3}
 --- !u!64 &4702297707568829076
 MeshCollider:
   m_ObjectHideFlags: 0

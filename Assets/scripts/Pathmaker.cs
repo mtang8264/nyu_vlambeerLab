@@ -10,17 +10,34 @@ using UnityEngine;
 // put this script on a Sphere... it SHOULD move around, and drop a path of floor tiles behind it
 
 public class Pathmaker : MonoBehaviour {
+    public static float top, left, right, bot;
+    // STEP 2: ============================================================================================
+    // translate the pseudocode below
 
-// STEP 2: ============================================================================================
-// translate the pseudocode below
+    //	DECLARE CLASS MEMBER VARIABLES:
+    //	Declare a private integer called counter that starts at 0; 		// counter will track how many floor tiles I've instantiated
+    //	Declare a public Transform called floorPrefab, assign the prefab in inspector;
+    //	Declare a public Transform called pathmakerSpherePrefab, assign the prefab in inspector; 		// you'll have to make a "pathmakerSphere" prefab later
+    private int counter = 0;
+    public static int totalCounter = 0;
+    public Transform floorPrefab;
+    public Transform floorPrefab_Crack;
+    public Transform floorPrefab_Hole;
+    public Transform floorPrefab_Skull;
+    public Transform pathmakerSpherePrefab;
+    private int counterMax;
+    private float cloneChance;
 
-//	DECLARE CLASS MEMBER VARIABLES:
-//	Declare a private integer called counter that starts at 0; 		// counter will track how many floor tiles I've instantiated
-//	Declare a public Transform called floorPrefab, assign the prefab in inspector;
-//	Declare a public Transform called pathmakerSpherePrefab, assign the prefab in inspector; 		// you'll have to make a "pathmakerSphere" prefab later
+    private void Start()
+    {
+        counterMax = Random.Range(10, 50);
+        if (totalCounter == 0)
+            cloneChance = Random.Range(0.6f, 1f);
+        else
+            cloneChance = Random.Range(.8f, 1f);
+    }
 
-
-	void Update () {
+    void Update () {
 //		If counter is less than 50, then:
 //			Generate a random number from 0.0f to 1.0f;
 //			If random number is less than 0.25f, then rotate myself 90 degrees;
@@ -33,6 +50,87 @@ public class Pathmaker : MonoBehaviour {
 //			Increment counter;
 //		Else:
 //			Destroy my game object; 		// self destruct if I've made enough tiles already
+        if(totalCounter >=  500)
+        {
+            Destroy(gameObject);
+        }
+
+        if(counter < counterMax)
+        {
+            float i = Random.value;
+            if(i < 0.15f)
+            {
+                transform.Rotate(0, 90, 0);
+            }
+            else if(i > 0.15f && i < 0.3f)
+            {
+                transform.Rotate(0, -90, 0);
+            }
+            else if(i > cloneChance)
+            {
+                Instantiate(pathmakerSpherePrefab).position = transform.position;
+            }
+
+
+            while(Physics.OverlapSphere(transform.position, 1f).Length > 0)
+            {
+                transform.Translate(5, 0, 0);
+            }
+
+            if(totalCounter == 0)
+            {
+                top = transform.position.z;
+                bot = transform.position.z;
+                left = transform.position.x;
+                right = transform.position.x;
+            }
+            else
+            {
+                if(transform.position.z > top)
+                {
+                    top = transform.position.z;
+                }
+                if(transform.position.z < bot)
+                {
+                    bot = transform.position.z;
+                }
+                if(transform.position.x > right)
+                {
+                    right = transform.position.x;
+                }
+                if(transform.position.x < left)
+                {
+                    left = transform.position.x;
+                }
+            }
+
+            float j = Random.value;
+            if (j < 0.7)
+            {
+                Instantiate(floorPrefab).position = transform.position;
+            }
+            else if(j < 0.8)
+            {
+                Instantiate(floorPrefab_Skull).position = transform.position;
+            }
+            else if(j < 0.9)
+            {
+                Instantiate(floorPrefab_Crack).position = transform.position;
+            }
+            else
+            {
+                Instantiate(floorPrefab_Hole).position = transform.position;
+            }
+
+            transform.Translate(5, 0, 0);
+
+            counter++;
+            totalCounter++;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 	}
 
 } 
